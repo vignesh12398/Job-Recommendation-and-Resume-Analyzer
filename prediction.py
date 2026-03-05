@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score
-df = pd.read_csv(r'C:\Users\A.Vignesh Balaji\Downloads\Expanded_Roles_Job_Dataset.csv')
+df = pd.read_csv('Expanded_Roles_Job_Dataset.csv')
 df['combined_text'] = (
     df['User_Skills'].fillna('') + ' ' +
     df['Job_Requirements'].fillna('')
@@ -31,5 +31,6 @@ def predict(user_input):
     role_name = lr.predict(user_vector)[0]
 
     prob = lr.predict_proba(user_vector).max()
+
 
     return prob, role_name
