@@ -1,0 +1,35 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score
+df = pd.read_csv(r'C:\Users\A.Vignesh Balaji\Downloads\Expanded_Roles_Job_Dataset.csv')
+df['combined_text'] = (
+    df['User_Skills'].fillna('') + ' ' +
+    df['Job_Requirements'].fillna('')
+)
+
+role_df = df.groupby('Job_Role')['combined_text'].apply(lambda x: ' '.join(x)).reset_index()
+tfidf_row = TfidfVectorizer(stop_words='english',
+    ngram_range=(1,2),
+    max_features=5000)
+
+X = tfidf_row.fit_transform(df['combined_text'])
+y=df['Job_Role']
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=42)
+from sklearn.linear_model import LogisticRegression
+lr = LogisticRegression(max_iter=1000,class_weight="balanced")
+lr.fit(X_train,y_train)
+y_pred = lr.predict(X_test)
+acc = accuracy_score(y_test, y_pred)
+
+print(f"Model accuracy: {acc*100:.2f}%")
+def predict(user_input):
+
+    user_vector = tfidf_row.transform([user_input])
+
+    role_name = lr.predict(user_vector)[0]
+
+    prob = lr.predict_proba(user_vector).max()
+
+    return prob, role_name
