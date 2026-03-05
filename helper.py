@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from PyPDF2 import PdfReader
 
 # Load dataset
-df = pd.read_csv(r'C:\Users\A.Vignesh Balaji\Downloads\Expanded_Roles_Job_Dataset.csv')
+df = pd.read_csv('Expanded_Roles_Job_Dataset.csv')
 
 # Combine text columns
 df['combined_text'] = (
@@ -34,4 +34,5 @@ def recommend_job(text, top_n=5):
     sim_series = pd.Series(sim_scores)
     top_indices = sim_series.sort_values(ascending=False).head(top_n).index
     return role_df.iloc[top_indices][['Job_Role']]
+
 
