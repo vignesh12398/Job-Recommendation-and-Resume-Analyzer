@@ -34,8 +34,6 @@ def train_model():
     y_pred = model.predict(X_test)
     acc = accuracy_score(y_test,y_pred)
 
-    print(f"Model accuracy: {acc*100:.2f}%")
-
     return model, tfidf
 
 model, tfidf = train_model()
