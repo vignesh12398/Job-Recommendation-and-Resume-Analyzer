@@ -178,7 +178,7 @@ BTech AIML Student
 Interested in:
 - Artificial Intelligence
 - Machine Learning
-- Building AI assistants like **Jarvis**
+
 
 ---
 
