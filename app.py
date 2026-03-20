@@ -8,38 +8,57 @@ from resume_score import resume_suggestions
 st.markdown("""
 <style>
 
-.main {
-    background-color: #0e1117;
+/* Background */
+.stApp {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
 }
 
+/* Titles */
 h1 {
-    color: #00f5d4;
+    color: #38bdf8;
     text-align: center;
+    font-weight: bold;
 }
 
 h2 {
     color: #00bbf9;
 }
 
+/* Card style */
+.card {
+    background-color: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.4);
+    margin-bottom: 20px;
+}
+
+/* Button */
 .stButton>button {
-    background-color: #00bbf9;
+    background: linear-gradient(90deg, #06b6d4, #3b82f6);
     color: white;
-    border-radius: 8px;
-    height: 45px;
-    width: 200px;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
     font-size: 16px;
+    font-weight: bold;
 }
 
 .stButton>button:hover {
-    background-color: #0077b6;
-    color: white;
+    background: linear-gradient(90deg, #0891b2, #2563eb);
+}
+
+/* Text area */
+textarea {
+    border-radius: 10px !important;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
 st.sidebar.markdown("""
-<h2 style='color:#00bbf9'>💼Job Recommendation System</h2>
+<h2 style='text-align:center;color:#38bdf8;'>🚀  Career System</h2>
+<p style='text-align:center;color:#94a3b8;'>Smart Resume + Job AI</p>
 """, unsafe_allow_html=True)
 uploaded_file = st.sidebar.file_uploader("Choose a file", type=["pdf"])
 st.sidebar.title("Navigation")
@@ -56,9 +75,21 @@ page = st.sidebar.radio(
 if page == "🧠 Career Prediction":
 
     st.title("Prediction of getting Recommended")
+    st.markdown("""
+    <div class="card">
+    <h3>🧠 AI Career Prediction</h3>
+    <p style="color:#94a3b8;">
+    Enter your skills or upload resume to predict your ideal career role.
+    </p>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.subheader("Enter Skills (Optional)")
+    # st.markdown('<div class="card">', unsafe_allow_html=True)
+
+    st.subheader("💡 Enter Skills (Optional)")
     user_input = st.text_area("Enter your skills")
+
+    st.markdown('</div>', unsafe_allow_html=True)
 
     if st.button("Check Recommendation"):
 
@@ -103,8 +134,41 @@ if page == "🧠 Career Prediction":
         </div>
         """, unsafe_allow_html=True)
 elif page=='📄 Resume Analyzer':
-        st.title("📄 Resume Analyzer")
+        st.markdown("""
+        <div style="text-align:center; margin-bottom:20px;">
+        <h2 style="color:#38bdf8; margin-bottom:5px;">
+        🚀  Career Assistant
+        </h2>
+        <p style="color:#94a3b8; font-size:15px;">
+        Smart Resume Scoring • Career Prediction • Job Recommendations
+        </p>
+        </div>
+        """, unsafe_allow_html=True)
+        st.markdown("""
+        <div class="card">
+        <h3>👋 Welcome to Resume Analyzer</h3>
+        <p style="color:#94a3b8;">
+        Upload your resume from the sidebar to get:
+        <br>✔️ ATS Score
+        <br>✔️ Resume Feedback
+        <br>✔️ Improvement Suggestions
+        </p>
+        </div>
+        """, unsafe_allow_html=True)
+        if uploaded_file is None:
+            st.info("📄 Upload your resume from the left sidebar to get started!")
 
+            st.markdown("""
+            <div class="card">
+            <h3>✨ What this tool does:</h3>
+            <ul>
+            <li>Analyze resume using AI</li>
+            <li>Give ATS score</li>
+            <li>Suggest improvements</li>
+            <li>Improve job chances</li>
+            </ul>
+            </div>
+            """, unsafe_allow_html=True)
 
 
         if uploaded_file is not None:
@@ -113,10 +177,13 @@ elif page=='📄 Resume Analyzer':
 
                 score, breakdown = resume_score(resume_text)
 
-                st.subheader("Resume Score")
-                st.progress(score / 100)
-                st.write(f"Score: {score}/100")
+                st.markdown('<div class="card">', unsafe_allow_html=True)
 
+                st.subheader("📊 Resume Score")
+                st.progress(score / 100)
+                st.metric("Score", f"{score}/100")
+
+                st.markdown('</div>', unsafe_allow_html=True)
                 st.write("Breakdown:", breakdown)
 
                 st.subheader("📌 ATS Improvement Suggestions")
@@ -127,6 +194,14 @@ elif page=='📄 Resume Analyzer':
 
 else:
         st.title("Top 5 job recommendations")
+        st.markdown("""
+        <div class="card">
+        <h3>💼 Job Recommendation Engine</h3>
+        <p style="color:#94a3b8;">
+        Get top job roles based on your skills or resume.
+        </p>
+        </div>
+        """, unsafe_allow_html=True)
         st.subheader("Enter Skills (Optional)")
         user_input = st.text_area("Enter your skills")
 
