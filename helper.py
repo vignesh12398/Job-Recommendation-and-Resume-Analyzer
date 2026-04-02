@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from PyPDF2 import PdfReader
 
 # Load dataset
-df = pd.read_csv('Expanded_Roles_Job_Dataset.csv')
+df = pd.read_csv('Final_Specialized_Dataset.csv')
 
 # Combine text columns
 df['combined_text'] = (
