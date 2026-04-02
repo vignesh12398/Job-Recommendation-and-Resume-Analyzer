@@ -41,7 +41,7 @@ Matches resume content with job dataset.
 
 ## 3️⃣ Resume Analyzer
 
-Evaluates resume quality and generates a **score out of 100** based on:
+Evaluates resume quality using ML model ridge and tf-idf and generates a **score out of 100** based on:
 
 * Skills
 * Projects
@@ -50,7 +50,6 @@ Evaluates resume quality and generates a **score out of 100** based on:
 * Tools
 * Certifications
 * Resume structure
-Using ML model ridge and tf-idf
 ---
 
 ## 4️⃣ ATS Improvement Suggestions
