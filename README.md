@@ -110,7 +110,7 @@ Job-Recommendation-System
 ├── requirements.txt
 ├── README.md
 └── dataset
-      └── Expanded_Roles_Job_Dataset.csv
+      └── Final_Specialized_Dataset.csv and Final_Fixed_Dataset.csv
 ```
 
 ---
