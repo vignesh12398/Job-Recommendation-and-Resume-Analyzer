@@ -61,6 +61,23 @@ def resume_score(resume_text):
     return total_score
 
 
+def detect_domain(text):
+    text = text.lower()
+
+    mech = ["cad", "solidworks", "thermodynamics", "ansys"]
+    civil = ["autocad", "structural", "construction"]
+    elec = ["circuits", "matlab", "embedded"]
+    cse = ["python", "ml", "react", "django"]
+
+    if any(k in text for k in mech):
+        return "mechanical"
+    elif any(k in text for k in civil):
+        return "civil"
+    elif any(k in text for k in elec):
+        return "electrical"
+    elif any(k in text for k in cse):
+        return "cse"
+    return "general"
 
 
 
@@ -68,7 +85,7 @@ def resume_suggestions(resume_text):
 
     text = resume_text.lower()
     tips = []
-
+    domain = detect_domain(text)
     # Skills
     skills = [
 
@@ -110,7 +127,15 @@ def resume_suggestions(resume_text):
     found_skills = [skill for skill in skills if skill in text]
 
     if len(found_skills) < 5:
-        tips.append("Add more technical skills relevant to your field (at least 5 skills recommended)")
+        if domain == "mechanical":
+            tips.append("Add skills like CAD, SolidWorks, Thermodynamics, ANSYS")
+        elif domain == "civil":
+            tips.append("Add skills like AutoCAD, Structural Analysis, Surveying")
+        elif domain == "electrical":
+            tips.append("Add skills like Circuits, MATLAB, Embedded Systems")
+        else:
+            tips.append("Add more technical skills relevant to your field")
+
 
     # Projects
     if "project" not in text:
@@ -158,7 +183,15 @@ def resume_suggestions(resume_text):
     found_tools = [tool for tool in tools if tool in text]
 
     if len(found_tools) < 2:
-        tips.append("Mention tools like Git, Docker, Linux, or Cloud platforms")
+        if domain == "mechanical":
+            tips.append("Mention tools like SolidWorks, ANSYS, or CAD software")
+        elif domain == "civil":
+            tips.append("Mention tools like AutoCAD, STAAD Pro, or Revit")
+        elif domain == "electrical":
+            tips.append("Mention tools like MATLAB, Simulink, or PCB tools")
+        else:
+            tips.append("Mention tools like Git, Docker, Linux, or Cloud platforms")
+
 
 
     # Keywords
@@ -232,7 +265,14 @@ def resume_suggestions(resume_text):
     found_keywords = [k for k in keywords if k in text]
 
     if len(found_keywords) < 2:
-        tips.append("Add domain-specific keywords for better ATS matching")
+        if domain == "mechanical":
+            tips.append("Add keywords like CAD, Thermodynamics, Manufacturing")
+        elif domain == "civil":
+            tips.append("Add keywords like Structural Analysis, Construction")
+        elif domain == "electrical":
+            tips.append("Add keywords like Circuits, Embedded Systems")
+        else:
+            tips.append("Add domain-specific keywords for better ATS matching")
 
 
     return tips
