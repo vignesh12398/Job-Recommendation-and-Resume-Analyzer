@@ -190,19 +190,20 @@ elif page=='📄 Resume Analyzer':
 
 
         if uploaded_file is not None:
-                resume_text = helper.extract_text_from_pdf(uploaded_file)
+               resume_text = helper.extract_text_from_pdf(uploaded_file)
                 tips=resume_suggestions(resume_text)
 
-                score, breakdown = resume_score(resume_text)
+                # breakdown = resume_score(resume_text)
+                score=predict_score(resume_text)
 
                 st.markdown('<div class="card">', unsafe_allow_html=True)
 
                 st.subheader("📊 Resume Score")
                 st.progress(score / 100)
-                st.metric("Score", f"{score}/100")
+                st.metric("Score", f"{int(score)}/100")
 
-                st.markdown('</div>', unsafe_allow_html=True)
-                st.write("Breakdown:", breakdown)
+                # st.markdown('</div>', unsafe_allow_html=True)
+                # st.write("Breakdown:", breakdown)
 
                 st.subheader("📌 ATS Improvement Suggestions")
                 for tip in tips:
