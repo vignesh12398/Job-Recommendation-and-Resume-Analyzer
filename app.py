@@ -7,6 +7,7 @@ from trend import get_trend
 from trend import trend_direction
 from resume_score import resume_score
 from resume_score import resume_suggestions
+from resume_score import predict_score
 st.markdown("""
 <style>
 
