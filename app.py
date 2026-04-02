@@ -3,6 +3,8 @@ import streamlit as st
 import pandas as pd
 from prediction import predict
 import helper
+from trend import get_trend
+from trend import trend_direction
 from resume_score import resume_score
 from resume_score import resume_suggestions
 st.markdown("""
@@ -68,7 +70,8 @@ page = st.sidebar.radio(
         [
                 "📄 Resume Analyzer",
                 "🧠 Career Prediction",
-                "💼 Job Recommendation"
+                "💼 Job Recommendation",
+                "📊 Job Market Trends"
         ]
 )
 
@@ -133,6 +136,21 @@ if page == "🧠 Career Prediction":
 
         </div>
         """, unsafe_allow_html=True)
+elif page=="📊 Job Market Trends":
+        st.title("📊 Job Market Trends")
+        role = st.text_input("Enter Job Role (e.g., AI Engineer, Data Scientist)")
+        if role:
+            with st.spinner("Fetching real-time trends...."):
+                trend_data=get_trend(role)
+            if trend_data is None:
+                st.error("no trend data found,try diiferent role.")
+            else:
+                direction=trend_direction(trend_data,role)
+                st.subheader(f"Trend for{role}")
+                st.write(f"**Market Direction:** {direction}")
+
+                st.line_chart(trend_data)
+
 elif page=='📄 Resume Analyzer':
         st.markdown("""
         <div style="text-align:center; margin-bottom:20px;">
