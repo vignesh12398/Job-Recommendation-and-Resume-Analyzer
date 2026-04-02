@@ -1,3 +1,31 @@
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import Ridge
+def predict_score(resume_text):
+    text = resume_text.lower()
+
+    df = pd.read_csv(r"C:\Users\A.Vignesh Balaji\Downloads\Updated_Resume_Dataset_v2.csv")
+    df['text'] = df['User_Skills'] + " " + df['Job_Requirements'] + " " + df['Projects'] + " " + df['Certifications']
+    df['Score'] = df['text'].apply(resume_score)
+    df['Score'] = (df['Score'] / df['Score'].max()) * 100
+    df['text'] = df['text'].fillna("")
+    df['text'] = df['text'].astype(str)
+    v = TfidfVectorizer(stop_words='english', max_features=3000, min_df=2, ngram_range=(1, 2))
+    X = df['text']
+    y = df['Score']
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
+    X_train = v.fit_transform(X_train)
+    X_test = v.transform(X_test)
+    s = Ridge()
+    s.fit(X_train, y_train)
+    user_vector = v.transform([resume_text])
+
+    score = s.predict(user_vector)[0]
+    return score
+
 def resume_score(resume_text):
     text = resume_text.lower()
     scores={
@@ -30,7 +58,7 @@ def resume_score(resume_text):
 
     total_score = sum(scores.values())
 
-    return total_score, scores
+    return total_score
 
 
 
