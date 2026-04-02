@@ -5,7 +5,7 @@ from sklearn.linear_model import Ridge
 def predict_score(resume_text):
     text = resume_text.lower()
 
-    df = pd.read_csv("Updated_Resume_Dataset_v2.csv")
+    df = pd.read_csv("Final_Fixed_Dataset.csv.csv")
     df['text'] = df['User_Skills'] + " " + df['Job_Requirements'] + " " + df['Projects'] + " " + df['Certifications']
     df['Score'] = df['text'].apply(resume_score)
     df['Score'] = (df['Score'] / df['Score'].max()) * 100
