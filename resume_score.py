@@ -70,16 +70,42 @@ def resume_suggestions(resume_text):
     tips = []
 
     # Skills
-    skills = ["machine learning","deep learning","neural networks","computer vision",
+    skills = [
+
+# ---------- CSE / AI ----------
+"machine learning","deep learning","neural networks","computer vision",
 "nlp","natural language processing","reinforcement learning",
 "transformers","pytorch","tensorflow","keras","scikit-learn",
-"xgboost","lightgbm","opencv","huggingface","llm","gpt","pandas","numpy","matplotlib","seaborn","data analysis",
+"xgboost","lightgbm","opencv","huggingface","llm","gpt",
+"pandas","numpy","matplotlib","seaborn","data analysis",
 "data visualization","statistics","tableau","power bi",
-"excel","data mining","feature engineering","data wrangling","html","css","javascript","react","angular","vue",
+"excel","data mining","feature engineering","data wrangling",
+
+# ---------- Web / Software ----------
+"html","css","javascript","react","angular","vue",
 "node.js","express","django","flask","spring boot",
-"rest api","graphql","bootstrap","tailwind","docker","kubernetes","aws","azure","gcp",
+"rest api","graphql","bootstrap","tailwind",
+
+# ---------- DevOps / Tools ----------
+"docker","kubernetes","aws","azure","gcp",
 "linux","git","github","gitlab","ci/cd",
-"jenkins","terraform","ansible"]
+"jenkins","terraform","ansible",
+
+# ---------- Mechanical ----------
+"cad","solidworks","catia","ansys","thermodynamics",
+"heat transfer","fluid mechanics","manufacturing",
+"machine design","automotive","hvac",
+
+# ---------- Civil ----------
+"autocad","staad pro","structural analysis","surveying",
+"construction","geotechnical","transportation engineering",
+"concrete technology","site engineering",
+
+# ---------- Electrical / ECE ----------
+"circuits","matlab","simulink","embedded systems",
+"microcontrollers","pcb design","power systems",
+"control systems","vlsi","verilog","digital electronics"
+]
 
     found_skills = [skill for skill in skills if skill in text]
 
@@ -99,18 +125,35 @@ def resume_suggestions(resume_text):
         tips.append("Add your GitHub profile to show your projects")
 
     # Tools
-    tools = [
-        "git", "github", "gitlab",
-        "docker", "kubernetes",
-        "aws", "azure", "gcp",
-        "linux", "ubuntu",
-        "jupyter", "google colab",
-        "vscode", "visual studio code",
-        "pycharm", "intellij",
-        "eclipse", "postman",
-        "figma", "tableau", "power bi",
-        "excel", "notion"
-    ]
+   tools = [
+
+# ---------- CSE / Dev ----------
+"git", "github", "gitlab",
+"docker", "kubernetes",
+"aws", "azure", "gcp",
+"linux", "ubuntu",
+"jupyter", "google colab",
+"vscode", "visual studio code",
+"pycharm", "intellij",
+"eclipse", "postman",
+"figma", "tableau", "power bi",
+"excel", "notion",
+
+# ---------- Mechanical ----------
+"solidworks", "catia", "ansys",
+"autodesk inventor", "fusion 360",
+"nx cad", "creo",
+
+# ---------- Civil ----------
+"autocad", "staad pro", "etabs",
+"revit", "primavera", "arcgis",
+
+# ---------- Electrical / ECE ----------
+"matlab", "simulink",
+"proteus", "multisim",
+"pspice", "altium",
+"ltspice"
+]
 
     found_tools = [tool for tool in tools if tool in text]
 
@@ -165,7 +208,26 @@ def resume_suggestions(resume_text):
         "artificial intelligence", "generative ai", "llm", "gpt", "prompt engineering",
 
         # Professional keywords
-        "problem solving", "teamwork", "communication", "leadership", "project management"
+        "problem solving", "teamwork", "communication", "leadership", "project management",
+        # ---------- Mechanical ----------
+        "cad", "solidworks", "catia", "ansys", "creo",
+        "thermodynamics", "heat transfer", "fluid mechanics",
+        "machine design", "manufacturing", "automotive",
+        "hvac", "cnc", "production engineering",
+        
+        # ---------- Civil ----------
+        "autocad", "staad pro", "etabs", "revit",
+        "structural analysis", "surveying", "construction",
+        "geotechnical engineering", "transportation engineering",
+        "concrete technology", "site engineering",
+        
+        # ---------- Electrical / ECE ----------
+        "circuits", "digital electronics", "analog electronics",
+        "embedded systems", "microcontrollers",
+        "matlab", "simulink",
+        "power systems", "control systems",
+        "vlsi", "verilog", "fpga",
+        "pcb design", "signal processing"
     ]
     found_keywords = [k for k in keywords if k in text]
 
