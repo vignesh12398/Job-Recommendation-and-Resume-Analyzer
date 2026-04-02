@@ -50,7 +50,6 @@ Evaluates resume quality and generates a **score out of 100** based on:
 * Tools
 * Certifications
 * Resume structure
-  
 Using ML model ridge and tf-idf
 ---
 
