@@ -29,7 +29,7 @@ def train_model():
     df = df[df['Job_Role'].isin(counts[counts >= 10].index)]
     
     # 🔥 LIMIT ROLES (MOST IMPORTANT)
-    top_roles = df['Job_Role'].value_counts().head(8).index
+    top_roles = df['Job_Role'].value_counts().head(15).index
     df = df[df['Job_Role'].isin(top_roles)]
     print(df['Job_Role'].value_counts())
     # role_df = df.groupby('Job_Role')['combined_text'].apply(lambda x: ' '.join(x)).reset_index()
