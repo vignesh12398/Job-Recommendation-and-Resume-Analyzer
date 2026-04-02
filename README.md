@@ -1,70 +1,99 @@
-# 💼  Job Recommendation & Resume Analyzer
+# 💼 Job Recommendation & Resume Analyzer
 
-An ** Job Recommendation and Resume Analysis system** built using **Python, Machine Learning, and Streamlit**.  
+An ** Job Recommendation and Resume Analysis system** built using Python, Machine Learning, and Streamlit.
+
 The system analyzes resumes or user-entered skills to:
 
-- Predict the **most suitable career role**
-- Recommend **top matching jobs**
-- Evaluate **resume quality**
-- Provide **ATS improvement suggestions**
+* Predict the most suitable career role
+* Recommend top matching jobs
+* Evaluate resume quality
+* Provide ATS improvement suggestions
+* 📊 Analyze real-time job market trends
+
+👉 **Live App:**
+https://job-recommendation-and-resume-analyzer-ndvbujlwjxqp8nz5jkujtp.streamlit.app/
 
 ---
--open here-https://job-recommendation-and-resume-analyzer-ndvbujlwjxqp8nz5jkujtp.streamlit.app/
 
 # 🚀 Features
 
 ## 1️⃣ Career Role Prediction
-Predicts the most suitable **job role** based on skills or resume text using:
 
-- TF-IDF Vectorization
-- Logistic Regression
+Predicts the most suitable job role based on skills or resume text using:
 
-Displays **model confidence score**.
+* TF-IDF Vectorization
+* Logistic Regression
+
+Displays model confidence score.
 
 ---
 
 ## 2️⃣ Job Recommendation System
+
 Recommends **Top 5 relevant job roles** using:
 
-- TF-IDF
-- Cosine Similarity
+* TF-IDF
+* Cosine Similarity
 
 Matches resume content with job dataset.
 
 ---
 
 ## 3️⃣ Resume Analyzer
+
 Evaluates resume quality and generates a **score out of 100** based on:
 
-- Skills
-- Projects
-- Experience
-- Education
-- Tools
-- Certifications
-- Resume structure
+* Skills
+* Projects
+* Experience
+* Education
+* Tools
+* Certifications
+* Resume structure
 
 ---
 
 ## 4️⃣ ATS Improvement Suggestions
+
 Provides suggestions like:
 
-- Add more technical skills
-- Include projects
-- Add GitHub profile
-- Mention tools like Docker, Git, Cloud
-- Improve ATS keywords
+* Add more technical skills
+* Include projects
+* Add GitHub profile
+* Mention tools like Docker, Git, Cloud
+* Improve ATS keywords
+
+---
+
+## 5️⃣ 📊 Job Market Trends (NEW 🔥)
+
+Analyzes real-world demand for job roles using **Google Trends (Pytrends)**:
+
+* Enter any job role (e.g., AI Engineer, Data Scientist)
+* Displays **trend graph over last 12 months**
+* Shows market direction:
+
+  * 📈 Increasing
+  * 📉 Decreasing
+  * ➖ Stable
+
+👉 Includes:
+
+* Smart trend direction detection
+* Fallback mechanism (prevents API failure crashes)
+* Real-time visualization using Streamlit
 
 ---
 
 # 🧠 Machine Learning Techniques
 
-| Technique | Purpose |
-|--------|--------|
+| Technique            | Purpose                            |
+| -------------------- | ---------------------------------- |
 | TF-IDF Vectorization | Convert text to numerical features |
-| Logistic Regression | Career role prediction |
-| Cosine Similarity | Job recommendation |
-| NLP | Resume analysis |
+| Logistic Regression  | Career role prediction             |
+| Cosine Similarity    | Job recommendation                 |
+| NLP                  | Resume analysis                    |
+| Pytrends             | Job market trend analysis          |
 
 ---
 
@@ -77,6 +106,7 @@ Job-Recommendation-System
 ├── prediction.py
 ├── helper.py
 ├── resume_score.py
+├── trend.py
 ├── main.py
 ├── requirements.txt
 ├── README.md
@@ -90,9 +120,9 @@ Job-Recommendation-System
 
 The dataset contains:
 
-- **User_Skills**
-- **Job_Requirements**
-- **Job_Role**
+* User_Skills
+* Job_Requirements
+* Job_Role
 
 These columns are combined to create training text for the ML models.
 
@@ -117,8 +147,6 @@ pip install -r requirements.txt
 
 # ▶️ Run the Application
 
-Run the Streamlit app:
-
 ```bash
 streamlit run app.py
 ```
@@ -133,53 +161,35 @@ http://localhost:8501
 
 # 📂 Application Pages
 
-## 📄 Resume Analyzer
-- Resume score
-- Breakdown of evaluation
-- ATS suggestions
-
-## 🧠 Career Prediction
-- Predicts most suitable job role
-- Shows model confidence
-
-## 💼 Job Recommendation
-- Shows top 5 job roles based on similarity
+* 📄 Resume Analyzer
+* 🧠 Career Prediction
+* 💼 Job Recommendation
+* 📊 Job Market Trends
 
 ---
 
 # 🛠 Tech Stack
 
-- Python
-- Scikit-learn
-- Streamlit
-- Pandas
-- NumPy
-- PyPDF2
-- TF-IDF
-- Cosine Similarity
+* Python
+* Scikit-learn
+* Streamlit
+* Pandas
+* NumPy
+* PyPDF2
+* TF-IDF
+* Cosine Similarity
+* Pytrends (Google Trends API)
 
 ---
 
-# 🔮 Future Improvements
 
-- Use **BERT / Transformers for better predictions**
-- Add **real job data from LinkedIn / Indeed**
-- Improve **resume ATS scoring**
-- Deploy using **Docker + AWS**
-- Add **resume skill extraction with NLP**
-
----
 
 # 👨‍💻 Author
 
-**Vignesh Balaji**  
+**Vignesh Balaji**
 BTech AIML Student
 
 Interested in:
-- Artificial Intelligence
-- Machine Learning
 
-
----
-
-⭐ If you like this project, consider giving it a **star on GitHub!**
+* Artificial Intelligence
+* Machine Learning
