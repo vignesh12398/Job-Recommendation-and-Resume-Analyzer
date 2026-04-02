@@ -190,7 +190,7 @@ elif page=='📄 Resume Analyzer':
 
 
         if uploaded_file is not None:
-               resume_text = helper.extract_text_from_pdf(uploaded_file)
+                resume_text = helper.extract_text_from_pdf(uploaded_file)
                 tips=resume_suggestions(resume_text)
 
                 # breakdown = resume_score(resume_text)
