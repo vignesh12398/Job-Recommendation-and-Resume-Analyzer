@@ -51,9 +51,9 @@ def load_model():
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
     acc = accuracy_score(y_test, y_pred)
-    return model, tfidf_row,acc,c
+    return model, tfidf_row,acc
 
-model, tfidf_row,acc,c = load_model()
+model, tfidf_row,acc= load_model()
 # y_pred = model.predict(X_test)
 # acc = accuracy_score(y_test, y_pred)
 
