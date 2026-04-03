@@ -7,7 +7,7 @@ from sklearn.linear_model import LogisticRegression
 
 @st.cache_resource
 def load_model():
-    df = pd.read_csv(r"C:\Users\A.Vignesh Balaji\Downloads\Final_Specialized_Dataset_Fixed.csv")
+    df = pd.read_csv("Final_Specialized_Dataset_Fixed.csv")
 
     df['combined_text'] = (
         df['User_Skills'].fillna('') + ' ' +
