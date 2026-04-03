@@ -58,7 +58,7 @@ model, tfidf_row,acc= load_model()
 # acc = accuracy_score(y_test, y_pred)
 
 print(f"Model accuracy: {acc*100:.2f}%")
-print(c)
+
 def predict(user_input):
     user_input = clean_text(user_input)
     user_vector = tfidf_row.transform([user_input])
