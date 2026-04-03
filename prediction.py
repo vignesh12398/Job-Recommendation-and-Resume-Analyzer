@@ -6,67 +6,63 @@ from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
 
 @st.cache_resource
-def train_model():
+def load_model():
+    df = pd.read_csv(r"C:\Users\A.Vignesh Balaji\Downloads\Final_Specialized_Dataset_Fixed.csv")
 
-    df = pd.read_csv('Final_Specialized_Dataset_Fixed.csv')
     df['combined_text'] = (
         df['User_Skills'].fillna('') + ' ' +
-        df['Job_Requirements'].fillna('') + ' ' +
-        df['Job_Role'].fillna('')
+        df['Job_Requirements'].fillna('')
     )
-    
-    
-    # 2. Clean text
-    import re
-    def clean_text(text):
-        text = text.lower()
-        text = re.sub(r'\W+', ' ', text)
-        return text
-    
+
     df['combined_text'] = df['combined_text'].apply(clean_text)
-    
-    counts = df['Job_Role'].value_counts()
-    df = df[df['Job_Role'].isin(counts[counts >= 10].index)]
-    
-    # 🔥 LIMIT ROLES (MOST IMPORTANT)
-    top_roles = df['Job_Role'].value_counts().head(50).index
-    df = df[df['Job_Role'].isin(top_roles)]
-    print(df['Job_Role'].value_counts())
-    # role_df = df.groupby('Job_Role')['combined_text'].apply(lambda x: ' '.join(x)).reset_index()
-    tfidf_row = TfidfVectorizer(
-        stop_words='english',
-        ngram_range=(1,2),
-        max_features=15000,
-        min_df=3
-    )
-    
-    X_train_text, X_test_text, y_train, y_test = train_test_split(
+
+
+
+    X_train, X_test, y_train, y_test = train_test_split(
         df['combined_text'],
         df['Job_Role'],
         test_size=0.2,
         random_state=42,
         stratify=df['Job_Role']
     )
-    
-    X_train = tfidf_row.fit_transform(X_train_text)
-    X_test = tfidf_row.transform(X_test_text)
-    from sklearn.linear_model import LogisticRegression
-    
-    model = LogisticRegression(max_iter=1000, class_weight="balanced")
+
+    tfidf_row = TfidfVectorizer(
+        stop_words='english',
+        ngram_range=(1, 2),
+        max_features=10000,
+        min_df=1,
+        sublinear_tf=True
+    )
+    X_train = tfidf_row.fit_transform(X_train)
+    X_test = tfidf_row.transform(X_test)
+
+    model = LogisticRegression(
+        max_iter=1000,
+        class_weight='balanced',
+        C=1.0,
+        solver='lbfgs',   # ← faster than saga for your data size
+        n_jobs=-1
+    )
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
     acc = accuracy_score(y_test, y_pred)
-    return model,tfidf_row
+    return model, tfidf_row,acc,c
 
+model, tfidf_row,acc,c = load_model()
+# y_pred = model.predict(X_test)
+# acc = accuracy_score(y_test, y_pred)
 
-model, tfidf = train_model()
-
+print(f"Model accuracy: {acc*100:.2f}%")
+print(c)
 def predict(user_input):
-
-    user_vector = tfidf.transform([user_input])
+    user_input = clean_text(user_input)
+    user_vector = tfidf_row.transform([user_input])
 
     role_name = model.predict(user_vector)[0]
 
     prob = model.predict_proba(user_vector).max()
 
+
     return prob, role_name
+
+
