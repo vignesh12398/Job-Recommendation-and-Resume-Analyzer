@@ -150,7 +150,7 @@ def resume_suggestions(resume_text):
         tips.append("Add your GitHub profile to show your projects")
 
     # Tools
-   tools = [
+    tools = [
 
 # ---------- CSE / Dev ----------
 "git", "github", "gitlab",
