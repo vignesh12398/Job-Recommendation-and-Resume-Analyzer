@@ -4,7 +4,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
+import re
 
+def clean_text(text):
+    text = text.lower()
+    text = re.sub(r'\W+', ' ', text)
+    return text
 @st.cache_resource
 def load_model():
     df = pd.read_csv("Final_Specialized_Dataset_Fixed.csv")
