@@ -52,15 +52,15 @@ Evaluates resume quality using ML model ridge and tf-idf and generates a **score
 * Resume structure
 ---
 
-## 4️⃣ ATS Improvement Suggestions
+### 4️⃣ 🤖 AI-Powered ATS Improvement Suggestions (NEW 🔥)
+Uses **Groq LLM API (Llama 3)** to analyze resumes and provide personalized suggestions:
+* Specific skill gap identification
+* Missing section detection
+* ATS keyword recommendations
+* Project improvement tips
+* Resume formatting advice
 
-Provides suggestions like:
-
-* Add more technical skills
-* Include projects
-* Add GitHub profile
-* Mention tools like Docker, Git, Cloud
-* Improve ATS keywords
+> Powered by Llama 3 via Groq API — not rule-based, actual AI analysis of your resume content.
 
 ---
 
@@ -84,17 +84,16 @@ Analyzes real-world demand for job roles using **Google Trends (Pytrends)**:
 
 ---
 
-# 🧠 Machine Learning Techniques
+## 🧠 Machine Learning Techniques
 
-| Technique            | Purpose                            |
-| -------------------- | ---------------------------------- |
+| Technique | Purpose |
+|---|---|
 | TF-IDF Vectorization | Convert text to numerical features |
-| Logistic Regression  | Career role prediction             |
-| Cosine Similarity    | Job recommendation                 |
-| NLP                  | Resume analysis                    |
-| Pytrends             | Job market trend analysis          |
-
----
+| Logistic Regression | Career role prediction |
+| Ridge Regression | Resume score prediction |
+| Cosine Similarity | Job recommendation |
+| Groq LLM (Llama 3) | AI-powered ATS suggestions |
+| Pytrends | Job market trend analysis |
 
 # 📁 Project Structure
 
@@ -141,7 +140,8 @@ Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-
+Set up API key — create `.streamlit/secrets.toml`:
+ GROQ_API_KEY = "your-groq-api-key"
 ---
 
 # ▶️ Run the Application
@@ -167,17 +167,17 @@ http://localhost:8501
 
 ---
 
-# 🛠 Tech Stack
-
+## 🛠 Tech Stack
 * Python
 * Scikit-learn
 * Streamlit
 * Pandas
 * NumPy
 * PyPDF2
-* TF-IDF
-* Cosine Similarity
+* Groq API (Llama 3)
+* TF-IDF + Cosine Similarity
 * Pytrends (Google Trends API)
+
 
 ---
 
