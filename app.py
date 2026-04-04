@@ -208,7 +208,7 @@ elif page=='📄 Resume Analyzer':
 
                 st.subheader("📌 ATS Improvement Suggestions")
                 for tip in tips:
-                        st.write(".",tip)
+                         st.info(f"💡 {tip}")
 
 
 
