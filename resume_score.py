@@ -81,7 +81,7 @@ def resume_score(resume_text):
 def resume_suggestions(resume_text):
     client = Groq(api_key=st.secrets["GROQ_API_KEY"])
     response = client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model="openai/gpt-oss-20b",
         messages=[{
             "role":"user",
             "content":f"""You are an ATS resume expert. Analyze this resume and give exactly 5 specific improvement suggestions.
