@@ -15,8 +15,7 @@ def load_model():
     df = pd.read_csv("Final_Specialized_Dataset_Fixed.csv")
 
     df['combined_text'] = (
-        df['User_Skills'].fillna('') + ' ' +
-        df['Job_Requirements'].fillna('')
+        df['User_Skills'].fillna('')
     )
 
     df['combined_text'] = df['combined_text'].apply(clean_text)
