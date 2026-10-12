@@ -5,3 +5,4 @@ scikit-learn
 PyPDF2
 pytrends
 groq
+sentence_transformers
