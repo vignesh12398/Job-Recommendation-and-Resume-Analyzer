@@ -10,6 +10,8 @@ The system analyzes resumes or user-entered skills to:
 * Provide ATS improvement suggestions
 * 📊 Analyze real-time job market trends
 
+[![Architecture diagram of vignesh12398/job-recommendation-and-resume-analyzer](https://gitdiagram.com/vignesh12398/job-recommendation-and-resume-analyzer/diagram.png)](https://gitdiagram.com/vignesh12398/job-recommendation-and-resume-analyzer?utm_source=readme&utm_medium=picture)
+
 👉 **Live App:**
 https://job-recommendation-and-resume-analyzer-ndvbujlwjxqp8nz5jkujtp.streamlit.app/
 
